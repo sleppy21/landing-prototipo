@@ -1,0 +1,93 @@
+{
+    "preguntas_frecuentes": [
+        {
+            "categoria": "Productos",
+            "preguntas": [
+                {
+                    "pregunta": "¿Qué tallas tienen disponibles?",
+                    "respuesta": "Manejamos un amplio rango de tallas para satisfacer todas las necesidades:\n- Prendas superiores: desde S hasta XL con medidas específicas por tipo de prenda\n- Pantalones: desde talla 28 hasta 36\n- Contamos con una guía detallada de medidas para cada prenda\n- Ofrecemos servicio de ajustes personalizado\nPuedo ayudarte a encontrar tu talla ideal según tus medidas.",
+                    "palabras_clave": ["tallas", "medidas", "size", "ajustes"]
+                },
+                {
+                    "pregunta": "¿Los precios incluyen IGV?",
+                    "respuesta": "Sí, todos nuestros precios mostrados incluyen IGV (18%). Esto aplica tanto en tienda física como online. Los precios que ves son los precios finales que pagarás, sin sorpresas adicionales. En caso de ofertas o descuentos, estos se aplican sobre el precio final.",
+                    "palabras_clave": ["precio", "igv", "impuestos", "costos"]
+                },
+                {
+                    "pregunta": "¿Hacen entregas a domicilio?",
+                    "respuesta": "¡Sí! Ofrecemos diferentes opciones de envío:\n- Delivery estándar (24-48h): S/9.90 en Lima\n- Delivery express (mismo día): S/19.90 en zonas seleccionadas\n- Envío gratis en compras mayores a S/150\n- Envíos a provincia: 2-4 días hábiles\nPuedes rastrear tu pedido en tiempo real a través de nuestra web o app.",
+                    "palabras_clave": ["delivery", "envío", "entrega", "domicilio"]
+                }
+            ]
+        },
+        {
+            "categoria": "Pagos",
+            "preguntas": [
+                {
+                    "pregunta": "¿Qué métodos de pago aceptan?",
+                    "respuesta": "Aceptamos múltiples formas de pago para tu comodidad:\n- Efectivo\n- Todas las tarjetas de crédito/débito (Visa, Mastercard, AMEX)\n- Pagos digitales: Yape, Plin, PayPal\n- Transferencias bancarias\n- Pago contra entrega (solo Lima)\nAdemás, ofrecemos hasta 12 cuotas sin intereses con tarjetas seleccionadas.",
+                    "palabras_clave": ["pago", "tarjeta", "efectivo", "yape", "cuotas"]
+                },
+                {
+                    "pregunta": "¿Tienen opción de pago contra entrega?",
+                    "respuesta": "¡Sí! El pago contra entrega está disponible en Lima Metropolitana con las siguientes condiciones:\n- Pedidos hasta S/500\n- Puedes pagar en efectivo o con tarjeta\n- Debes mostrar DNI al recibir\n- Disponible de lunes a sábado\nRecomendamos tener el monto exacto para agilizar la entrega.",
+                    "palabras_clave": ["contra entrega", "efectivo", "delivery", "pago"]
+                }
+            ]
+        },
+        {
+            "categoria": "Devoluciones",
+            "preguntas": [
+                {
+                    "pregunta": "¿Cuál es su política de devoluciones?",
+                    "respuesta": "Nuestra política de devoluciones está diseñada para tu tranquilidad:\n- 15 días para devoluciones en tienda física\n- 30 días para compras online\n- La prenda debe estar sin usar y con etiquetas\n- Reembolso en la misma forma de pago original\n- Proceso express en tienda (máximo 20 minutos)\nPara iniciar una devolución solo necesitas tu comprobante de pago y DNI.",
+                    "palabras_clave": ["devolución", "reembolso", "cambio", "garantía"]
+                },
+                {
+                    "pregunta": "¿Cómo puedo hacer un cambio de talla?",
+                    "respuesta": "Los cambios de talla son muy sencillos:\n- Gratuitos dentro de los primeros 15 días\n- Presenta el ticket de compra y la prenda con etiquetas\n- Disponible en cualquiera de nuestras tiendas\n- Sujeto a disponibilidad de stock\n- Servicio de asesoría de tallas incluido\nSi la talla que buscas no está disponible, podemos pedirla a otra tienda sin costo.",
+                    "palabras_clave": ["cambio", "talla", "ajuste", "devolución"]
+                }
+            ]
+        },
+        {
+            "categoria": "Tiendas",
+            "preguntas": [
+                {
+                    "pregunta": "¿Cuáles son sus horarios de atención?",
+                    "respuesta": "Nuestros horarios están pensados para tu comodidad:\n- Lunes a Sábado: 10:00 AM a 9:00 PM\n- Domingos: 11:00 AM a 8:00 PM\n- Feriados: Horario especial (consultar web)\nContamos con atención preferencial para adultos mayores y personas con discapacidad en las primeras horas.",
+                    "palabras_clave": ["horario", "atención", "tienda", "horarios"]
+                },
+                {
+                    "pregunta": "¿Dónde están ubicados?",
+                    "respuesta": "Tenemos tiendas estratégicamente ubicadas:\n1. Plaza Norte: Av. Alfredo Mendiola 1400, Independencia\n- Tercer nivel, junto a escaleras eléctricas\n- Estacionamiento gratuito\n2. Miraflores: Av. Larco 1234\n- A una cuadra del Parque Kennedy\n- Estacionamiento disponible\nTodas nuestras tiendas cuentan con acceso para silla de ruedas.",
+                    "palabras_clave": ["ubicación", "dirección", "tienda", "local"]
+                }
+            ]
+        }
+    ],
+    "categorias_faq": {
+        "Productos": {
+            "descripcion": "Información sobre nuestros productos, tallas, disponibilidad y características",
+            "prioridad": 1
+        },
+        "Pagos": {
+            "descripcion": "Todo sobre métodos de pago, facilidades y proceso de compra",
+            "prioridad": 2
+        },
+        "Devoluciones": {
+            "descripcion": "Políticas y procesos de devolución y cambios",
+            "prioridad": 1
+        },
+        "Tiendas": {
+            "descripcion": "Ubicaciones, horarios y servicios en tienda",
+            "prioridad": 2
+        }
+    },
+    "mensajes_rapidos": {
+        "saludo": "¡Hola! Soy el asistente virtual de Fashion Store. ¿En qué puedo ayudarte hoy?",
+        "despedida": "¡Gracias por contactarnos! Si tienes más preguntas, no dudes en consultarme. ¡Que tengas un excelente día!",
+        "no_disponible": "Lo siento, en este momento no tengo esa información específica. ¿Te gustaría que te contacte un asesor personalizado?",
+        "derivacion": "Para ayudarte mejor con esta consulta, te sugiero contactar directamente con nuestro equipo de atención al cliente al (01) 500-0000"
+    }
+}
