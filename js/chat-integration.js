@@ -33,7 +33,6 @@ class ChatIntegration {
      */
     async init() {
         try {
-            console.log('🤖 Iniciando integración del chat...');
             
             // Esperar a que el DOM esté listo
             if (document.readyState === 'loading') {
@@ -59,7 +58,6 @@ class ChatIntegration {
             this.checkBotConnection();
             this.isInitialized = true;
             
-            console.log('✅ Chat integrado correctamente');
             
             // Mostrar botón con animación después de un delay
             setTimeout(() => {
@@ -452,7 +450,6 @@ class ChatIntegration {
                 if (response.ok) {
                     this.isConnected = true;
                     this.retryCount = 0;
-                    console.log('✅ Bot conectado correctamente');
                     this.updateConnectionStatus('conectado');
                     
                     // Establecer health check periódico cada 30 segundos cuando esté conectado
@@ -699,6 +696,8 @@ if (document.readyState === 'loading') {
 // Exponer globalmente para debug
 window.chatIntegration = chatIntegration;
 
+// Comentar service worker temporalmente para evitar errores
+/*
 // Registrar service worker si está disponible
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     window.addEventListener('load', () => {
@@ -711,3 +710,4 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
             });
     });
 }
+*/
