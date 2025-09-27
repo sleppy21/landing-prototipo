@@ -7,7 +7,7 @@
 class ChatIntegration {
     constructor() {
         this.isInitialized = false;
-        this.botServerUrl = 'http://localhost:5001';
+        this.botServerUrl = 'http://localhost:5000'; // Corregido: puerto 5000
         this.modal = null;
         this.iframe = null;
         this.floatButton = null;
@@ -413,20 +413,52 @@ class ChatIntegration {
      * Envía mensaje al bot via API
      */
     async sendMessageToBot(message) {
-        const response = await fetch(`${this.botServerUrl}/api/chat`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: message })
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        try {
+            console.log('📤 Enviando mensaje al bot:', message);
+            
+            // Configuración de la petición con timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 segundos timeout
+            
+            const response = await fetch(`${this.botServerUrl}/api/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                mode: 'cors',
+                credentials: 'omit',
+                cache: 'no-cache',
+                signal: controller.signal,
+                body: JSON.stringify({ message: message })
+            });
+            
+            clearTimeout(timeoutId);
+            console.log('📥 Respuesta del servidor:', response.status, response.statusText);
+            
+            if (!response.ok) {
+                throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            console.log('📋 Datos recibidos:', data);
+            
+            return data.response || data.message || 'No se pudo obtener respuesta del bot.';
+            
+        } catch (error) {
+            console.error('❌ Error en sendMessageToBot:', error);
+            
+            // Diferentes tipos de errores
+            if (error.name === 'AbortError') {
+                throw new Error('Timeout: El bot tardó demasiado en responder');
+            } else if (error.message.includes('Failed to fetch')) {
+                throw new Error('Error de conexión: No se pudo conectar con el bot');
+            } else if (error.message.includes('CORS')) {
+                throw new Error('Error de permisos: Problema de CORS');
+            } else {
+                throw new Error(`Error del bot: ${error.message}`);
+            }
         }
-        
-        const data = await response.json();
-        return data.response || 'No se pudo obtener respuesta del bot.';
     }
     
     /**
@@ -443,35 +475,60 @@ class ChatIntegration {
      */
     checkBotConnection() {
         // Solo hacer check si no estamos conectados y no hemos excedido los reintentos
-        if (this.isConnected || this.retryCount >= this.maxRetries) return;
+        if (this.isConnected || this.retryCount >= this.maxRetries) {
+            if (this.retryCount >= this.maxRetries) {
+                console.log('🚫 Máximo de reintentos alcanzado. Deteniendo intentos de conexión.');
+                this.updateConnectionStatus('error');
+            }
+            return;
+        }
 
-        fetch(`${this.botServerUrl}/health`)
+        console.log(`🔄 Verificando conexión del bot (intento ${this.retryCount + 1}/${this.maxRetries})...`);
+
+        // Usar fetch con timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 segundos timeout
+
+        fetch(`${this.botServerUrl}/health`, {
+            signal: controller.signal,
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        })
             .then(response => {
+                clearTimeout(timeoutId);
                 if (response.ok) {
                     this.isConnected = true;
                     this.retryCount = 0;
+                    console.log('✅ Bot conectado correctamente');
                     this.updateConnectionStatus('conectado');
                     
-                    // Establecer health check periódico cada 30 segundos cuando esté conectado
+                    // Establecer health check periódico más espaciado
                     if (this.healthCheckInterval) clearInterval(this.healthCheckInterval);
                     this.healthCheckInterval = setInterval(() => {
                         this.periodicHealthCheck();
-                    }, 30000);
+                    }, 60000); // Cada 60 segundos en lugar de 30
                 } else {
                     throw new Error(`HTTP ${response.status}`);
                 }
             })
             .catch(error => {
+                clearTimeout(timeoutId);
                 this.isConnected = false;
                 this.retryCount++;
-                console.warn(`❌ Error conectando con el bot (intento ${this.retryCount}/${this.maxRetries}):`, error.message);
+                
+                // Solo mostrar warning si no es un error de abort
+                if (error.name !== 'AbortError') {
+                    console.warn(`❌ Error conectando con el bot (intento ${this.retryCount}/${this.maxRetries}):`, error.message);
+                }
+                
                 this.updateConnectionStatus('desconectado');
                 
                 // Solo reintentar si no hemos excedido el máximo
                 if (this.retryCount < this.maxRetries) {
                     setTimeout(() => {
                         this.checkBotConnection();
-                    }, this.retryInterval);
+                    }, this.retryInterval * this.retryCount); // Backoff exponencial
                 } else {
                     console.error('🚫 Máximo de reintentos alcanzado. Bot no disponible.');
                     this.updateConnectionStatus('error');
@@ -480,27 +537,42 @@ class ChatIntegration {
     }
 
     /**
-     * Verificación periódica de salud del bot
+     * Verificación periódica de salud del bot (menos agresiva)
      */
     periodicHealthCheck() {
-        fetch(`${this.botServerUrl}/health`)
+        if (!this.isConnected) return; // No hacer check si ya sabemos que no está conectado
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 segundos timeout
+
+        fetch(`${this.botServerUrl}/health`, {
+            signal: controller.signal,
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        })
             .then(response => {
+                clearTimeout(timeoutId);
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
                 }
+                // Todo OK, mantener conexión
             })
             .catch(error => {
-                console.warn('⚠️ Conexión con el bot perdida:', error.message);
-                this.isConnected = false;
-                this.retryCount = 0;
-                if (this.healthCheckInterval) {
-                    clearInterval(this.healthCheckInterval);
-                    this.healthCheckInterval = null;
+                clearTimeout(timeoutId);
+                if (error.name !== 'AbortError') {
+                    console.warn('⚠️ Conexión con el bot perdida:', error.message);
+                    this.isConnected = false;
+                    this.retryCount = 0;
+                    if (this.healthCheckInterval) {
+                        clearInterval(this.healthCheckInterval);
+                        this.healthCheckInterval = null;
+                    }
+                    // Reiniciar proceso de conexión con delay más largo
+                    setTimeout(() => {
+                        this.checkBotConnection();
+                    }, 10000); // 10 segundos de espera
                 }
-                // Reiniciar proceso de conexión
-                setTimeout(() => {
-                    this.checkBotConnection();
-                }, this.retryInterval);
             });
     }
 

@@ -1,9 +1,0 @@
-# Fashion Store Bot - Dependencias Simplificadas
-# Solo las dependencias esenciales para el funcionamiento básico
-
-# Servidor web
-flask>=3.0.0
-flask-cors>=4.0.0
-
-# Utilidades básicas
-requests>=2.31.0
