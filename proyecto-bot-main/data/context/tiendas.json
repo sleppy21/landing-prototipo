@@ -1,0 +1,178 @@
+{
+    "tiendas": [
+        {
+            "id": "T001",
+            "nombre": "Fashion Store Plaza Norte",
+            "direccion": "Av. Alfredo Mendiola 1400, Independencia",
+            "telefono": "01-523-4567",
+            "horario": {
+                "lunes_viernes": "10:00 AM - 9:00 PM",
+                "sabado": "10:00 AM - 9:00 PM",
+                "domingo": "11:00 AM - 8:00 PM",
+                "feriados": "11:00 AM - 8:00 PM",
+                "horario_preferencial": "10:00 AM - 11:00 AM"
+            },
+            "servicios": [
+                {
+                    "nombre": "Cambios y Devoluciones",
+                    "descripcion": "Proceso express en menos de 20 minutos",
+                    "horario": "Todo el día"
+                },
+                {
+                    "nombre": "Sastrería",
+                    "descripcion": "Ajustes y arreglos profesionales",
+                    "horario": "11:00 AM - 7:00 PM"
+                },
+                {
+                    "nombre": "Personal Shopper",
+                    "descripcion": "Asesoría de imagen personalizada",
+                    "horario": "Previa cita"
+                },
+                {
+                    "nombre": "Click & Collect",
+                    "descripcion": "Recoge tus compras online",
+                    "horario": "Todo el día"
+                }
+            ],
+            "facilidades": [
+                "Estacionamiento gratuito",
+                "Acceso para silla de ruedas",
+                "Probadores amplios",
+                "Wi-Fi gratis",
+                "Zona de descanso"
+            ],
+            "referencias": "Tercer nivel, al lado de las escaleras eléctricas centrales",
+            "coordenadas": {
+                "lat": "-11.9876",
+                "lng": "-77.0543"
+            },
+            "medios_transporte": [
+                "Metropolitano: Estación Tomas Valle",
+                "Buses: C, IM, SO"
+            ],
+            "categorias_disponibles": [
+                "Ropa Casual",
+                "Ropa Formal",
+                "Deportiva",
+                "Accesorios"
+            ]
+        },
+        {
+            "id": "T002",
+            "nombre": "Fashion Store Miraflores",
+            "direccion": "Av. Larco 1234, Miraflores",
+            "telefono": "01-445-6789",
+            "horario": {
+                "lunes_viernes": "10:00 AM - 9:00 PM",
+                "sabado": "10:00 AM - 9:00 PM",
+                "domingo": "11:00 AM - 8:00 PM",
+                "feriados": "11:00 AM - 8:00 PM",
+                "horario_preferencial": "10:00 AM - 11:00 AM"
+            },
+            "servicios": [
+                {
+                    "nombre": "Cambios y Devoluciones",
+                    "descripcion": "Proceso express garantizado",
+                    "horario": "Todo el día"
+                },
+                {
+                    "nombre": "Sastrería Premium",
+                    "descripcion": "Ajustes y confección a medida",
+                    "horario": "10:00 AM - 8:00 PM"
+                },
+                {
+                    "nombre": "Personal Shopper VIP",
+                    "descripcion": "Servicio exclusivo de asesoría",
+                    "horario": "Previa cita"
+                },
+                {
+                    "nombre": "Envío a Domicilio",
+                    "descripcion": "Delivery el mismo día",
+                    "horario": "Hasta las 6:00 PM"
+                }
+            ],
+            "facilidades": [
+                "Estacionamiento con valet parking",
+                "Acceso para silla de ruedas",
+                "Probadores VIP",
+                "Wi-Fi de alta velocidad",
+                "Café lounge",
+                "Área de niños"
+            ],
+            "referencias": "A una cuadra del Parque Kennedy",
+            "coordenadas": {
+                "lat": "-12.1234",
+                "lng": "-77.0321"
+            },
+            "medios_transporte": [
+                "Metropolitano: Estación Ricardo Palma",
+                "Buses: C, IM, SO",
+                "Estación de Metro (próximamente)"
+            ],
+            "categorias_disponibles": [
+                "Ropa Casual Premium",
+                "Alta Costura",
+                "Colecciones Limitadas",
+                "Accesorios de Lujo"
+            ]
+        }
+    ],
+    "medios_contacto": {
+        "central_telefonica": {
+            "numero": "01-500-0000",
+            "horario": "Lunes a Domingo 9:00 AM - 10:00 PM"
+        },
+        "whatsapp": {
+            "numero": "+51 987 654 321",
+            "horario": "24/7",
+            "tiempo_respuesta": "Máximo 15 minutos"
+        },
+        "email": {
+            "direccion": "atención@fashionstore.com",
+            "tiempo_respuesta": "Máximo 24 horas"
+        },
+        "redes_sociales": {
+            "facebook": {
+                "usuario": "FashionStorePeru",
+                "tiempo_respuesta": "1 hora"
+            },
+            "instagram": {
+                "usuario": "@fashionstore_pe",
+                "tiempo_respuesta": "1 hora"
+            },
+            "twitter": {
+                "usuario": "@FashionStorePE",
+                "tiempo_respuesta": "1 hora"
+            }
+        }
+    },
+    "servicios_especiales": {
+        "citas_personal_shopper": {
+            "descripcion": "Servicio personalizado de asesoría de imagen",
+            "duracion": "1-2 horas",
+            "precio": "Gratuito en compras mayores a S/300",
+            "reserva": {
+                "telefono": "01-500-0001",
+                "web": "fashionstore.com/citas",
+                "anticipacion": "24 horas"
+            }
+        },
+        "sastreria": {
+            "descripcion": "Ajustes y modificaciones profesionales",
+            "servicios": [
+                "Ajuste de basta",
+                "Entalle de prendas",
+                "Modificaciones especiales"
+            ],
+            "tiempos": {
+                "express": "24 horas",
+                "regular": "3-5 días"
+            },
+            "precios": {
+                "basta": "S/15",
+                "entalle": "Desde S/25",
+                "especiales": "Previa evaluación"
+            }
+        }
+    }
+}

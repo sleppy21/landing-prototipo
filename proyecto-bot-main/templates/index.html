@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <title>slepp</title>
+    <meta name="description" content="Asistente virtual inteligente para Fashion Store: consulta productos, precios, tallas, devoluciones y más." />
+    
+    <!-- Preconexiones para mejorar rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos y estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- PWA -->
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icon-192.png') }}">
+</head>
+<body>
+    <main class="chat-container" role="main">
+        <header class="chat-header" role="banner">
+            <div class="header-content">
+                <div class="brand">
+                    <i class="fas fa-tshirt" aria-hidden="true"></i>
+                    <h1>Fashion Store Assistant</h1>
+                </div>
+                <div class="store-info" aria-live="polite">
+                    <i class="fas fa-circle" aria-hidden="true"></i>
+                    <span>Abierto ahora · 10:00 AM - 9:00 PM</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema de color">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <span class="sr-only">Cambiar tema</span>
+                </button>
+            </div>
+        </header>
+
+        <section class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+            <div class="message bot welcome-message" role="article">
+                <div class="message-content">
+                    <h2 class="welcome-title">Hola! Soy tu asistente virtual</h2>
+                    <p>Estoy aquí para ayudarte con:</p>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-tag" aria-hidden="true"></i>
+                            <span>Catálogo y precios</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-ruler" aria-hidden="true"></i>
+                            <span>Guía de tallas</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                            <span>Cambios y devoluciones</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span>Ubicación y horarios</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="suggestions" aria-label="Sugerencias rápidas">
+                    <button type="button" class="suggestion-chip" data-question="Ver ofertas del día">
+                        <i class="fas fa-percentage" aria-hidden="true"></i>
+                        Ver ofertas del día
+                    </button>
+                    <button type="button" class="suggestion-chip" data-question="¿Cómo hacer un cambio?">
+                        <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                        ¿Cómo hacer un cambio?
+                    </button>
+                    <button type="button" class="suggestion-chip" data-question="Catálogo de temporada">
+                        <i class="fas fa-tshirt" aria-hidden="true"></i>
+                        Ver catálogo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="chat-input" role="contentinfo">
+            <form id="chat-form" class="chat-form" role="form" aria-label="Enviar mensaje">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        name="question"
+                        placeholder="Escribe tu pregunta aquí..." 
+                        autocomplete="off"
+                        aria-label="Campo de mensaje"
+                    />
+                    <button id="send-btn" type="submit" class="send-button" aria-label="Enviar mensaje">
+                        <div class="send-icon">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </div>
+                        <div class="processing-animation">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="quick-suggestions" class="suggestions" aria-label="Sugerencias rápidas">
+                    <!-- Las sugerencias se generan dinámicamente -->
+                </div>
+            </form>
+        </footer>
+    </main>
+
+    <!-- Mensaje para usuarios sin JavaScript -->
+    <noscript>
+        <div class="noscript-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Este chat necesita JavaScript para funcionar. Por favor, actívalo para continuar.</p>
+        </div>
+    </noscript>
+
+    <!-- Scripts -->
+    <script defer src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

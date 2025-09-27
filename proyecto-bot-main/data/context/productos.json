@@ -1,0 +1,161 @@
+{
+    "productos": [
+        {
+            "id": "CJ001",
+            "nombre": "Casaca de Jean Classic",
+            "descripcion": "Casaca de jean 100% algodón premium, diseño clásico atemporal con botones metálicos y bolsillos funcionales. Ideal para un look casual o semi-formal. Corte regular que se adapta a cualquier tipo de cuerpo.",
+            "precio": 120.00,
+            "tallas": ["S", "M", "L", "XL"],
+            "colores": ["Azul oscuro", "Azul medio", "Negro"],
+            "categoria": "Casacas",
+            "caracteristicas": [
+                "Algodón 100% premium",
+                "Botones metálicos resistentes",
+                "Bolsillos funcionales",
+                "Costuras reforzadas",
+                "Lavado stone wash"
+            ],
+            "cuidados": [
+                "Lavar en máquina con agua fría",
+                "No usar blanqueador",
+                "Secar en sombra",
+                "Planchar a temperatura media"
+            ],
+            "stock": {
+                "Azul oscuro": {
+                    "S": 5,
+                    "M": 8,
+                    "L": 6,
+                    "XL": 4
+                },
+                "Azul medio": {
+                    "S": 3,
+                    "M": 7,
+                    "L": 4,
+                    "XL": 2
+                },
+                "Negro": {
+                    "S": 4,
+                    "M": 6,
+                    "L": 5,
+                    "XL": 3
+                }
+            },
+            "medidas": {
+                "S": {"pecho": "96-100cm", "largo": "62cm"},
+                "M": {"pecho": "101-105cm", "largo": "64cm"},
+                "L": {"pecho": "106-110cm", "largo": "66cm"},
+                "XL": {"pecho": "111-115cm", "largo": "68cm"}
+            }
+        },
+        {
+            "id": "PL001",
+            "nombre": "Polo Sport Premium",
+            "descripcion": "Polo deportivo confeccionado en algodón pima peruano de alta calidad. Diseño versátil con corte regular fit y detalles en el cuello. Perfecto para actividades deportivas o uso casual.",
+            "precio": 49.90,
+            "tallas": ["S", "M", "L", "XL"],
+            "colores": ["Blanco", "Negro", "Gris", "Azul marino"],
+            "categoria": "Polos",
+            "caracteristicas": [
+                "Algodón pima peruano",
+                "Tejido transpirable",
+                "Protección UV",
+                "Anti-bacterial",
+                "No se deforma"
+            ],
+            "cuidados": [
+                "Lavar en máquina",
+                "No usar secadora",
+                "Planchar a baja temperatura",
+                "No usar blanqueador"
+            ],
+            "stock": {
+                "Blanco": {
+                    "S": 10,
+                    "M": 12,
+                    "L": 8,
+                    "XL": 6
+                },
+                "Negro": {
+                    "S": 8,
+                    "M": 15,
+                    "L": 10,
+                    "XL": 5
+                }
+            },
+            "medidas": {
+                "S": {"pecho": "88-92cm", "largo": "65cm"},
+                "M": {"pecho": "93-97cm", "largo": "67cm"},
+                "L": {"pecho": "98-102cm", "largo": "69cm"},
+                "XL": {"pecho": "103-107cm", "largo": "71cm"}
+            }
+        },
+        {
+            "id": "JN001",
+            "nombre": "Jean Slim Fit Stretch",
+            "descripcion": "Jean de alta elasticidad con tecnología comfort stretch. Diseño moderno slim fit que estiliza la figura. Fabricado con denim premium y acabados de primera calidad.",
+            "precio": 89.90,
+            "tallas": ["28", "30", "32", "34", "36"],
+            "colores": ["Azul oscuro", "Negro", "Gris"],
+            "categoria": "Jeans",
+            "caracteristicas": [
+                "98% Algodón, 2% Elastano",
+                "Tecnología comfort stretch",
+                "Bolsillos reforzados",
+                "Cremallera YKK",
+                "Costuras dobles"
+            ],
+            "cuidados": [
+                "Lavar al revés",
+                "Agua fría",
+                "No usar secadora",
+                "Planchar al revés"
+            ],
+            "stock": {
+                "Azul oscuro": {
+                    "28": 6,
+                    "30": 8,
+                    "32": 10,
+                    "34": 7,
+                    "36": 4
+                }
+            },
+            "medidas": {
+                "28": {"cintura": "71cm", "largo": "102cm"},
+                "30": {"cintura": "76cm", "largo": "102cm"},
+                "32": {"cintura": "81cm", "largo": "102cm"},
+                "34": {"cintura": "86cm", "largo": "102cm"},
+                "36": {"cintura": "91cm", "largo": "102cm"}
+            }
+        }
+    ],
+    "categorias": {
+        "Casacas": {
+            "descripcion": "Prendas exteriores para clima frío o casual",
+            "subcategorias": ["Jean", "Cuero", "Deportivas", "Formales"]
+        },
+        "Polos": {
+            "descripcion": "Prendas versátiles para uso diario o deportivo",
+            "subcategorias": ["Sport", "Casual", "Premium", "Básicos"]
+        },
+        "Jeans": {
+            "descripcion": "Pantalones en denim de diversos cortes y estilos",
+            "subcategorias": ["Slim", "Regular", "Relaxed", "Skinny"]
+        }
+    },
+    "guia_tallas": {
+        "superior": {
+            "S": {"pecho": "88-92cm", "hombros": "42-44cm"},
+            "M": {"pecho": "93-97cm", "hombros": "44-46cm"},
+            "L": {"pecho": "98-102cm", "hombros": "46-48cm"},
+            "XL": {"pecho": "103-107cm", "hombros": "48-50cm"}
+        },
+        "pantalones": {
+            "28": {"cintura": "71-73cm", "cadera": "88-90cm"},
+            "30": {"cintura": "76-78cm", "cadera": "93-95cm"},
+            "32": {"cintura": "81-83cm", "cadera": "98-100cm"},
+            "34": {"cintura": "86-88cm", "cadera": "103-105cm"},
+            "36": {"cintura": "91-93cm", "cadera": "108-110cm"}
+        }
+    }
+}
