@@ -179,8 +179,8 @@ def main():
     print("🌐 Servidor iniciando...")
     print("✅ Bot listo para recibir consultas")
     
-    # Obtener puerto desde variable de entorno o usar 5000 por defecto
-    port = int(os.environ.get('PORT', 5000))
+    # Configurar puerto 5001 específicamente para el launcher
+    port = 5001
     
     print(f"🚀 Servidor corriendo en http://localhost:{port}")
     print("📝 Endpoints disponibles:")
@@ -194,7 +194,7 @@ def main():
         app.run(
             host='0.0.0.0',
             port=port,
-            debug=True,
+            debug=False,  # Desactivar debug para reducir logs
             threaded=True,
             use_reloader=False
         )

@@ -7,21 +7,24 @@
 class ChatIntegration {
     constructor() {
         this.isInitialized = false;
-        this.botServerUrl = 'http://localhost:5000';
+        this.botServerUrl = 'http://localhost:5001';
         this.modal = null;
         this.iframe = null;
         this.floatButton = null;
         this.isModalOpen = false;
+        this.isConnected = false;
         this.retryCount = 0;
         this.maxRetries = 3;
-        
+        this.retryInterval = 5000; // 5 segundos entre intentos
+        this.healthCheckInterval = null;
+
         // Configuración
         this.config = {
             checkServerInterval: 30000, // 30 segundos
             loadTimeout: 10000, // 10 segundos
             animationDelay: 1000 // 1 segundo
         };
-        
+
         this.init();
     }
 
@@ -53,7 +56,7 @@ class ChatIntegration {
             this.createFloatButton();
             this.createModal();
             this.bindEvents();
-            this.checkBotServer();
+            this.checkBotConnection();
             this.isInitialized = true;
             
             console.log('✅ Chat integrado correctamente');
@@ -440,75 +443,89 @@ class ChatIntegration {
     /**
      * Verifica si el servidor del bot está disponible
      */
-    async checkBotServer() {
-        try {
-            const response = await fetch(`${this.botServerUrl}/health`, {
-                method: 'GET',
-                timeout: 5000,
-                headers: {
-                    'Accept': 'application/json'
+    checkBotConnection() {
+        // Solo hacer check si no estamos conectados y no hemos excedido los reintentos
+        if (this.isConnected || this.retryCount >= this.maxRetries) return;
+
+        fetch(`${this.botServerUrl}/health`)
+            .then(response => {
+                if (response.ok) {
+                    this.isConnected = true;
+                    this.retryCount = 0;
+                    console.log('✅ Bot conectado correctamente');
+                    this.updateConnectionStatus('conectado');
+                    
+                    // Establecer health check periódico cada 30 segundos cuando esté conectado
+                    if (this.healthCheckInterval) clearInterval(this.healthCheckInterval);
+                    this.healthCheckInterval = setInterval(() => {
+                        this.periodicHealthCheck();
+                    }, 30000);
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            })
+            .catch(error => {
+                this.isConnected = false;
+                this.retryCount++;
+                console.warn(`❌ Error conectando con el bot (intento ${this.retryCount}/${this.maxRetries}):`, error.message);
+                this.updateConnectionStatus('desconectado');
+                
+                // Solo reintentar si no hemos excedido el máximo
+                if (this.retryCount < this.maxRetries) {
+                    setTimeout(() => {
+                        this.checkBotConnection();
+                    }, this.retryInterval);
+                } else {
+                    console.error('🚫 Máximo de reintentos alcanzado. Bot no disponible.');
+                    this.updateConnectionStatus('error');
                 }
             });
+    }
 
-            if (response.ok) {
-                console.log('✅ Servidor del bot disponible');
-                this.updateButtonState('available');
+    /**
+     * Verificación periódica de salud del bot
+     */
+    periodicHealthCheck() {
+        fetch(`${this.botServerUrl}/health`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            })
+            .catch(error => {
+                console.warn('⚠️ Conexión con el bot perdida:', error.message);
+                this.isConnected = false;
                 this.retryCount = 0;
-            } else {
-                throw new Error(`Servidor respondió con: ${response.status}`);
-            }
-
-        } catch (error) {
-            console.warn('⚠️ Servidor del bot no disponible:', error.message);
-            this.updateButtonState('unavailable');
-            
-            // Reintentar después de un tiempo
-            if (this.retryCount < this.maxRetries) {
-                this.retryCount++;
-                setTimeout(() => this.checkBotServer(), 5000 * this.retryCount);
-            }
-        }
-
-        // Programar próxima verificación
-        setTimeout(() => this.checkBotServer(), this.config.checkServerInterval);
+                if (this.healthCheckInterval) {
+                    clearInterval(this.healthCheckInterval);
+                    this.healthCheckInterval = null;
+                }
+                // Reiniciar proceso de conexión
+                setTimeout(() => {
+                    this.checkBotConnection();
+                }, this.retryInterval);
+            });
     }
 
     /**
      * Actualiza el estado visual del botón
      */
-    updateButtonState(state) {
-        if (!this.floatButton) return;
+    updateConnectionStatus(status) {
+        const button = document.getElementById('chat-bot-button');
+        if (!button) return;
 
-        const icon = this.floatButton.querySelector('.chat-icon');
-        const badge = this.floatButton.querySelector('.chat-notification-badge');
+        button.classList.remove('connected', 'disconnected', 'error');
+        button.classList.add(status);
 
-        // Remover estados previos
-        this.floatButton.classList.remove('pulse', 'unavailable');
-        if (badge) badge.remove();
+        const statusText = {
+            'conectado': '💬 Chat Bot',
+            'desconectado': '⏳ Conectando...',
+            'error': '❌ Bot no disponible'
+        };
 
-        switch (state) {
-            case 'available':
-                this.floatButton.disabled = false;
-                this.floatButton.classList.add('pulse');
-                this.floatButton.title = 'Hablar con nuestro asistente virtual';
-                if (icon) icon.className = 'fas fa-comments chat-icon';
-                break;
-
-            case 'unavailable':
-                this.floatButton.disabled = true;
-                this.floatButton.classList.add('unavailable');
-                this.floatButton.title = 'Asistente no disponible temporalmente';
-                if (icon) icon.className = 'fas fa-exclamation-triangle chat-icon';
-                break;
-
-            case 'notification':
-                if (!badge) {
-                    const newBadge = document.createElement('span');
-                    newBadge.className = 'chat-notification-badge';
-                    newBadge.textContent = '!';
-                    this.floatButton.appendChild(newBadge);
-                }
-                break;
+        const textElement = button.querySelector('.chat-text');
+        if (textElement) {
+            textElement.textContent = statusText[status] || '💬 Chat Bot';
         }
     }
 
@@ -636,7 +653,7 @@ class ChatIntegration {
         return {
             initialized: this.isInitialized,
             modalOpen: this.isModalOpen,
-            serverAvailable: !this.floatButton?.disabled,
+            serverAvailable: this.isConnected,
             retryCount: this.retryCount
         };
     }
