@@ -1,0 +1,169 @@
+{
+    "productos": [
+        {
+            "id": "p001",
+            "nombre": "Camiseta Premium Algodón Orgánico",
+            "descripcion": "Camiseta de algodón 100% orgánico peinado, corte regular fit, perfecta para el día a día. Tejido suave y transpirable.",
+            "precio": 39.90,
+            "tallas": ["S", "M", "L", "XL"],
+            "colores": ["Negro", "Blanco", "Gris", "Azul Marino", "Verde Sage"],
+            "categoria": "Camisetas",
+            "destacado": true,
+            "etiquetas": ["sostenible", "básicos", "bestseller"]
+        },
+        {
+            "id": "p002", 
+            "nombre": "Jeans Premium Slim Fit",
+            "descripcion": "Jeans de algodón premium con elastano, corte ajustado pero cómodo. Diseño moderno con acabados premium y lavado sostenible.",
+            "precio": 129.90,
+            "tallas": ["28", "30", "32", "34", "36", "38"],
+            "colores": ["Azul Medio", "Azul Oscuro", "Negro", "Gris"],
+            "categoria": "Pantalones",
+            "destacado": true,
+            "etiquetas": ["premium", "bestseller"]
+        },
+        {
+            "id": "p003",
+            "nombre": "Blazer Formal Italiano",
+            "descripcion": "Blazer en fina mezcla de lana y poliéster, forro interior de seda. Corte moderno y elegante, ideal para ocasiones especiales.",
+            "precio": 259.90,
+            "tallas": ["S", "M", "L", "XL"],
+            "colores": ["Negro", "Azul Marino", "Gris Oxford"],
+            "categoria": "Sacos",
+            "destacado": false,
+            "etiquetas": ["formal", "premium", "elegante"]
+        },
+        {
+            "id": "p004",
+            "nombre": "Polo Piqué Sport",
+            "descripcion": "Polo en tejido piqué de alta calidad, perfecto para un look sport-casual. Incluye detalles en contraste.",
+            "precio": 69.90,
+            "tallas": ["S", "M", "L", "XL"],
+            "colores": ["Blanco", "Negro", "Azul Royal", "Rojo"],
+            "categoria": "Polos",
+            "destacado": true,
+            "etiquetas": ["casual", "sport", "verano"]
+        },
+        {
+            "id": "p005",
+            "nombre": "Camisa Oxford Button-Down",
+            "descripcion": "Camisa en tejido Oxford de primera calidad, corte regular fit. Perfecta para ocasiones formales o casual business.",
+            "precio": 89.90,
+            "tallas": ["S", "M", "L", "XL"],
+            "colores": ["Celeste", "Blanco", "Rosa Claro"],
+            "categoria": "Camisas",
+            "destacado": false,
+            "etiquetas": ["formal", "business", "clásico"]
+        }
+    ],
+    "faq": [
+        {
+            "pregunta": "¿Cuál es la política de devoluciones?",
+            "respuesta": "En Fashion Store queremos que estés 100% satisfecho. Aceptamos devoluciones dentro de los 15 días posteriores a la compra presentando el ticket y la prenda en estado original con todas sus etiquetas. El reembolso se realiza en la misma forma de pago original. Para compras online, el plazo se extiende a 30 días.",
+            "categoria": "Devoluciones"
+        },
+        {
+            "pregunta": "¿Cuáles son los horarios de atención?",
+            "respuesta": "Nuestro horario de atención es: Lunes a Sábado de 10:00 AM a 9:00 PM y Domingos de 11:00 AM a 8:00 PM. En fechas especiales y feriados puede haber variaciones que anunciamos en nuestras redes sociales.",
+            "categoria": "Horarios"
+        },
+        {
+            "pregunta": "¿Dónde están ubicados?",
+            "respuesta": "Nuestra tienda principal está ubicada en Av. Las Flores 123, Centro Comercial Plaza Mayor, Local 45, Lima. Contamos con estacionamiento gratuito para clientes y acceso para personas con movilidad reducida. Encuentra el mapa en nuestra web.",
+            "categoria": "Ubicación"
+        },
+        {
+            "pregunta": "¿Hacen cambios de talla?",
+            "respuesta": "¡Por supuesto! Realizamos cambios de talla sin costo dentro de los 30 días de la compra presentando el ticket original y la prenda con etiquetas. También ofrecemos el servicio de reserva de talla: si no encuentras tu talla, podemos notificarte cuando esté disponible.",
+            "categoria": "Cambios"
+        },
+        {
+            "pregunta": "¿Tienen servicio de arreglos?",
+            "respuesta": "Sí, contamos con servicio profesional de sastrería para ajustes y arreglos. Para prendas compradas en nuestra tienda, los ajustes básicos (bastas, cintura) tienen un 50% de descuento. El tiempo promedio es de 2-3 días hábiles.",
+            "categoria": "Servicios"
+        },
+        {
+            "pregunta": "¿Cuáles son sus métodos de pago?",
+            "respuesta": "Aceptamos todas las tarjetas de crédito y débito principales (Visa, Mastercard, American Express), efectivo, transferencias bancarias y pagos móviles (Yape, Plin). Para compras online, también aceptamos PayPal y pago contra entrega en Lima Metropolitana.",
+            "categoria": "Pagos"
+        },
+        {
+            "pregunta": "¿Tienen programa de fidelización?",
+            "respuesta": "¡Sí! Nuestro programa Fashion Club te ofrece puntos por cada compra, acceso a preventas exclusivas, cumpleaños doble puntos y promociones especiales. La membresía es gratuita y puedes inscribirte en tienda o en nuestra web.",
+            "categoria": "Fidelización"
+        },
+        {
+            "pregunta": "¿Cómo encuentro mi talla correcta?",
+            "respuesta": "Disponemos de una guía de tallas detallada en nuestra web. En tienda, nuestros asesores están capacitados para ayudarte a encontrar tu talla perfecta. Para prendas específicas, recomendamos consultar las medidas exactas en la descripción del producto.",
+            "categoria": "Tallas"
+        }
+    ],
+    "politicas": [
+        {
+            "tipo": "Envíos",
+            "descripcion": "Envío gratis en compras mayores a S/150. Tiempo estimado de entrega: 24-48 horas en Lima Metropolitana, 2-4 días hábiles en Lima Provincias, 4-7 días hábiles en otras provincias. Seguimiento en tiempo real disponible.",
+            "detalles": {
+                "costos": {
+                    "lima": "S/9.90",
+                    "provincias": "S/14.90",
+                    "express": "S/19.90"
+                },
+                "tiempos": {
+                    "lima": "24-48 horas",
+                    "provincias": "4-7 días",
+                    "express": "mismo día (Lima)"
+                }
+            }
+        },
+        {
+            "tipo": "Formas de Pago",
+            "descripcion": "Aceptamos todas las tarjetas de crédito/débito, efectivo, transferencias bancarias y pagos móviles. Pagos en línea procesados de forma segura con encriptación SSL.",
+            "detalles": {
+                "tarjetas": ["Visa", "Mastercard", "American Express", "Diners"],
+                "digital": ["Yape", "Plin", "PayPal"],
+                "cuotas": "Hasta 12 cuotas sin intereses en tarjetas seleccionadas"
+            }
+        },
+        {
+            "tipo": "Garantía",
+            "descripcion": "Todas nuestras prendas tienen garantía de 90 días por defectos de fábrica. Garantía extendida disponible para prendas premium. Compromiso de calidad Fashion Store.",
+            "detalles": {
+                "cobertura": [
+                    "Defectos de fabricación",
+                    "Problemas con costuras",
+                    "Decoloración prematura",
+                    "Fallas en cierres y botones"
+                ],
+                "exclusiones": [
+                    "Daños por mal uso",
+                    "Alteraciones no autorizadas",
+                    "Desgaste normal"
+                ]
+            }
+        },
+        {
+            "tipo": "Sostenibilidad",
+            "descripcion": "Comprometidos con la moda sostenible. Utilizamos materiales reciclados y orgánicos cuando es posible. Programa de reciclaje de prendas con beneficios para clientes.",
+            "iniciativas": [
+                "Empaques biodegradables",
+                "Colección sostenible",
+                "Reciclaje de prendas",
+                "Ahorro energético"
+            ]
+        }
+    ],
+    "ofertas_actuales": [
+        {
+            "titulo": "Descuentos de Temporada",
+            "descripcion": "Hasta 40% de descuento en colección de verano",
+            "validez": "Hasta agotar stock",
+            "condiciones": "No acumulable con otras promociones"
+        },
+        {
+            "titulo": "2x1 en Básicos",
+            "descripcion": "Lleva 2 prendas básicas y paga la de mayor valor",
+            "validez": "Toda la semana",
+            "exclusiones": "No aplica en prendas premium"
+        }
+    ]
+}

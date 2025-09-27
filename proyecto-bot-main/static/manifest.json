@@ -1,0 +1,25 @@
+{
+    "name": "Fashion Store Assistant",
+    "short_name": "Fashion Bot",
+    "description": "Asistente virtual inteligente para Fashion Store",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f8fafc",
+    "theme_color": "#0ea5e9",
+    "icons": [
+        {
+            "src": "/static/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/static/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "prefer_related_applications": false,
+    "orientation": "portrait"
+}
